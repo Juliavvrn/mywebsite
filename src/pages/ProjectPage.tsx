@@ -19,11 +19,11 @@ function ChartPanel({ chart }: { chart: CaseStudyChart }) {
     return entry
   })
 
-  const seriesColors = ['#ff4d00', '#ece9e4', '#ff8c4d']
+  const seriesColors = ['#ece9e4', '#bdb8b1', '#77726d']
 
   return (
     <div className="mt-10 overflow-hidden rounded-lg border border-[#ece9e4]/15 bg-[#ece9e4]/[0.02] p-6">
-      <p className="mb-6 font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#ff4d00]">
+      <p className="mb-6 font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#ece9e4]">
         {pick(chart.title, lang)}
       </p>
       <div className="h-[320px] w-full">
@@ -36,17 +36,17 @@ function ChartPanel({ chart }: { chart: CaseStudyChart }) {
               {chart.series.map((s, si) => (
                 <Radar key={si} dataKey={pick(s.name, lang)} stroke={seriesColors[si % seriesColors.length]} fill={seriesColors[si % seriesColors.length]} fillOpacity={0.25} strokeWidth={2} />
               ))}
-              <Tooltip contentStyle={{ background: '#0a0a0a', border: '1px solid #ff4d0040', borderRadius: '8px', fontSize: '12px', color: '#ece9e4' }} />
+              <Tooltip contentStyle={{ background: '#0a0a0a', border: '1px solid #ece9e440', borderRadius: '8px', fontSize: '12px', color: '#ece9e4' }} />
             </RadarChart>
           ) : (
             <BarChart data={data} layout="vertical" margin={{ left: 20, right: 20 }}>
               <XAxis type="number" domain={[0, max]} tick={{ fill: '#ece9e4', opacity: 0.4, fontSize: 10 }} stroke="#ece9e4" strokeOpacity={0.1} />
               <YAxis type="category" dataKey="label" tick={{ fill: '#ece9e4', opacity: 0.6, fontSize: 11 }} stroke="#ece9e4" strokeOpacity={0.1} width={140} />
-              <Tooltip contentStyle={{ background: '#0a0a0a', border: '1px solid #ff4d0040', borderRadius: '8px', fontSize: '12px', color: '#ece9e4' }} cursor={{ fill: '#ff4d00', fillOpacity: 0.05 }} />
+              <Tooltip contentStyle={{ background: '#0a0a0a', border: '1px solid #ece9e440', borderRadius: '8px', fontSize: '12px', color: '#ece9e4' }} cursor={{ fill: '#ece9e4', fillOpacity: 0.05 }} />
               {chart.series.map((s, si) => (
                 <Bar key={si} dataKey={pick(s.name, lang)} radius={[0, 4, 4, 0]}>
                   {data.map((_, di) => (
-                    <Cell key={di} fill={di === data.length - 1 ? '#ff4d00' : seriesColors[(si + 1) % seriesColors.length]} fillOpacity={di === data.length - 1 ? 0.8 : 0.3} />
+                    <Cell key={di} fill={di === data.length - 1 ? '#ece9e4' : seriesColors[(si + 1) % seriesColors.length]} fillOpacity={di === data.length - 1 ? 0.8 : 0.3} />
                   ))}
                 </Bar>
               ))}
@@ -65,11 +65,11 @@ function DataTable({ table }: { table: CaseStudyTable }) {
     <div className="mt-10 overflow-hidden rounded-lg border border-[#ece9e4]/15 bg-[#ece9e4]/[0.02]">
       <div className="overflow-x-auto">
         <table className="w-full min-w-[620px] border-collapse text-left">
-          <caption className="border-b border-[#ece9e4]/10 px-5 py-4 text-left font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#ff4d00]">
+          <caption className="border-b border-[#ece9e4]/10 px-5 py-4 text-left font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#ece9e4]">
             {pick(table.title, lang)}
           </caption>
           <thead>
-            <tr className="bg-[#ff4d00]/[0.06]">
+            <tr className="bg-[#ece9e4]/[0.06]">
               {table.columns.map((column, index) => (
                 <th key={index} className="border-b border-[#ece9e4]/10 px-5 py-4 font-mono2 text-[10px] uppercase tracking-[0.12em] text-[#ece9e4]/60">
                   {pick(column, lang)}
@@ -79,7 +79,7 @@ function DataTable({ table }: { table: CaseStudyTable }) {
           </thead>
           <tbody>
             {table.rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className="border-b border-[#ece9e4]/10 last:border-0 transition-colors hover:bg-[#ff4d00]/[0.04]">
+              <tr key={rowIndex} className="border-b border-[#ece9e4]/10 last:border-0 transition-colors hover:bg-[#ece9e4]/[0.04]">
                 {row.map((cell, cellIndex) => (
                   <td key={cellIndex} className={`${cellIndex === 0 ? 'font-semibold text-[#ece9e4]' : 'text-[#ece9e4]/65'} px-5 py-4 text-sm leading-relaxed`}>
                     {pick(cell, lang)}
@@ -151,20 +151,20 @@ function Flowchart({ diagram, variant }: { diagram: FlowDiagram; variant: CaseVa
         {pick(diagram.title, lang)}
       </p>
       {isEditorial || isTimeline ? (
-        <div className={`relative ${isTimeline ? 'space-y-0 border-l border-[#65b7c2]/45 pl-6 md:pl-10' : ''}`}>
+        <div className={`relative ${isTimeline ? 'space-y-0 border-l border-[#ece9e4]/45 pl-6 md:pl-10' : ''}`}>
           {flatNodes.map((nodeId, index) => {
             const node = nodeMap.get(nodeId)!
             return (
               <motion.div
                 key={nodeId}
-                className={`relative grid gap-4 border-t border-[#ece9e4]/15 py-6 md:grid-cols-[56px_1fr] md:gap-8 md:py-8 ${isTimeline ? 'border-t-0 border-b border-[#65b7c2]/15' : ''}`}
+                className={`relative grid gap-4 border-t border-[#ece9e4]/15 py-6 md:grid-cols-[56px_1fr] md:gap-8 md:py-8 ${isTimeline ? 'border-t-0 border-b border-[#ece9e4]/15' : ''}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: index * 0.06, duration: 0.5 }}
               >
-                {isTimeline && <span className="absolute -left-[31px] top-8 h-2.5 w-2.5 rounded-full bg-[#65b7c2] ring-4 ring-[#0a0a0a] md:-left-[51px]" />}
-                <span className={`font-mono2 text-[10px] tracking-[0.2em] ${isTimeline ? 'text-[#65b7c2]' : 'text-[#ff4d00]'}`}>
+                {isTimeline && <span className="absolute -left-[31px] top-8 h-2.5 w-2.5 rounded-full bg-[#ece9e4] ring-4 ring-[#0a0a0a] md:-left-[51px]" />}
+                <span className={`font-mono2 text-[10px] tracking-[0.2em] ${isTimeline ? 'text-[#ece9e4]' : 'text-[#ece9e4]'}`}>
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <div>
@@ -182,7 +182,7 @@ function Flowchart({ diagram, variant }: { diagram: FlowDiagram; variant: CaseVa
           })}
         </div>
       ) : (
-        <div className={`space-y-0 ${isSignal ? 'rounded-2xl border border-[#65b7c2]/20 bg-[#65b7c2]/[0.03] p-4 md:p-8' : ''}`}>
+        <div className={`space-y-0 ${isSignal ? 'rounded-2xl border border-[#ece9e4]/20 bg-[#ece9e4]/[0.03] p-4 md:p-8' : ''}`}>
           {layers.map((layer, li) => (
             <div key={li}>
               <div className={`flex flex-wrap gap-4 ${cols > 1 ? 'justify-center' : ''}`}>
@@ -191,13 +191,13 @@ function Flowchart({ diagram, variant }: { diagram: FlowDiagram; variant: CaseVa
                   return (
                     <motion.div
                       key={nodeId}
-                      className={`flex min-w-[180px] flex-1 flex-col ${isAudit ? 'items-start rounded-none border border-[#d8a84e]/35 bg-[#d8a84e]/[0.05] text-left' : isSignal ? 'items-center rounded-full border border-[#65b7c2]/45 bg-[#65b7c2]/[0.08] text-center' : 'items-center rounded-lg border border-[#ff4d00]/30 bg-[#ff4d00]/[0.04] text-center'} px-5 py-4 md:min-w-[200px]`}
+                      className={`flex min-w-[180px] flex-1 flex-col ${isAudit ? 'items-start rounded-none border border-[#ece9e4]/35 bg-[#ece9e4]/[0.05] text-left' : isSignal ? 'items-center rounded-full border border-[#ece9e4]/45 bg-[#ece9e4]/[0.08] text-center' : 'items-center rounded-lg border border-[#ece9e4]/30 bg-[#ece9e4]/[0.04] text-center'} px-5 py-4 md:min-w-[200px]`}
                       initial={{ opacity: 0, scale: 0.92 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true, margin: '-40px' }}
                       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      {isAudit && <span className="mb-3 font-mono2 text-[10px] tracking-[0.2em] text-[#d8a84e]">CHECK {String(nodeIndex + 1).padStart(2, '0')}</span>}
+                      {isAudit && <span className="mb-3 font-mono2 text-[10px] tracking-[0.2em] text-[#ece9e4]">CHECK {String(nodeIndex + 1).padStart(2, '0')}</span>}
                       <span className="font-display text-sm font-bold tracking-tight text-[#ece9e4] md:text-base">
                         {pick(node.label, lang)}
                       </span>
@@ -212,7 +212,7 @@ function Flowchart({ diagram, variant }: { diagram: FlowDiagram; variant: CaseVa
               </div>
               {li < layers.length - 1 && (
                 <div className="flex justify-center py-2">
-                  <ArrowDown className={`h-5 w-5 ${isSignal ? 'text-[#65b7c2]/60' : isAudit ? 'text-[#d8a84e]/60' : 'text-[#ff4d00]/50'}`} />
+                  <ArrowDown className={`h-5 w-5 ${isSignal ? 'text-[#ece9e4]/60' : isAudit ? 'text-[#ece9e4]/60' : 'text-[#ece9e4]/50'}`} />
                 </div>
               )}
             </div>
@@ -232,7 +232,7 @@ export default function ProjectPage() {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center px-6">
         <h1 className="font-display text-4xl font-extrabold uppercase">{t('Project not found', 'Проект не найден')}</h1>
-        <Link to="/" data-hover className="link-sweep mt-6 font-mono2 text-xs uppercase tracking-[0.3em] text-[#ff4d00]">
+        <Link to="/" data-hover className="link-sweep mt-6 font-mono2 text-xs uppercase tracking-[0.3em] text-[#ece9e4]">
           ← {t('Back', 'Назад')}
         </Link>
       </main>
@@ -294,7 +294,7 @@ export default function ProjectPage() {
               target="_blank"
               rel="noopener noreferrer"
               data-hover
-              className="link-sweep inline-flex w-fit items-center gap-2 font-mono2 text-[11px] uppercase tracking-[0.3em] text-[#ff4d00] underline decoration-[#ff4d00]/40 underline-offset-4 transition-colors hover:decoration-[#ff4d00]"
+              className="link-sweep inline-flex w-fit items-center gap-2 font-mono2 text-[11px] uppercase tracking-[0.3em] text-[#ece9e4] underline decoration-[#ece9e4]/40 underline-offset-4 transition-colors hover:decoration-[#ece9e4]"
             >
               {project.link.replace(/^https?:\/\//, '')}
               <ExternalLink className="h-3.5 w-3.5" />
@@ -309,7 +309,7 @@ export default function ProjectPage() {
       </div>
 
       <div className="grid gap-10 px-6 py-20 md:grid-cols-[1fr_2fr] md:px-10 md:py-28">
-        <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-[#ff4d00]">
+        <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-[#ece9e4]">
           {t('The brief', 'Задача')}
         </p>
         <div className="max-w-3xl space-y-6">
@@ -333,7 +333,7 @@ export default function ProjectPage() {
           key={si}
           className="grid gap-10 border-t border-[#ece9e4]/15 px-6 py-20 md:grid-cols-[1fr_2fr] md:px-10 md:py-28"
         >
-          <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-[#ff4d00]">
+          <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-[#ece9e4]">
             {pick(section.label, lang)}
           </p>
           <div className="max-w-3xl space-y-8">
@@ -346,7 +346,7 @@ export default function ProjectPage() {
             {section.findings?.map((finding, fi) => (
               <motion.div
                 key={fi}
-                className={`${isEditorial ? 'border-t border-[#ece9e4]/15 bg-transparent py-6 md:py-8' : isTimeline ? 'border-l-2 border-[#65b7c2]/45 bg-[#65b7c2]/[0.035] p-6 md:p-8' : isAudit ? 'rounded-none border border-[#d8a84e]/25 bg-[#d8a84e]/[0.035] p-6 md:p-8' : 'rounded-lg border border-[#ece9e4]/12 bg-[#ece9e4]/[0.025] p-6 md:p-8'} transition-colors hover:border-[#ff4d00]/50 hover:bg-[#ff4d00]/[0.06]`}
+                className={`${isEditorial ? 'border-t border-[#ece9e4]/15 bg-transparent py-6 md:py-8' : isTimeline ? 'border-l-2 border-[#ece9e4]/45 bg-[#ece9e4]/[0.035] p-6 md:p-8' : isAudit ? 'rounded-none border border-[#ece9e4]/25 bg-[#ece9e4]/[0.035] p-6 md:p-8' : 'rounded-lg border border-[#ece9e4]/12 bg-[#ece9e4]/[0.025] p-6 md:p-8'} transition-colors hover:border-[#ece9e4]/50 hover:bg-[#ece9e4]/[0.06]`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
@@ -364,7 +364,7 @@ export default function ProjectPage() {
                       "{pick(finding.quote, lang)}"
                     </p>
                     {finding.quoteAuthor && (
-                      <cite className="mt-3 block font-mono2 text-[11px] not-italic tracking-[0.2em] text-[#ff4d00]">
+                      <cite className="mt-3 block font-mono2 text-[11px] not-italic tracking-[0.2em] text-[#ece9e4]">
                         {pick(finding.quoteAuthor, lang)}
                       </cite>
                     )}
@@ -388,18 +388,18 @@ export default function ProjectPage() {
                 {section.modules.map((mod, mi) => (
                   <motion.div
                     key={mi}
-                    className={`${isEditorial ? 'border-t border-[#ece9e4]/15 bg-transparent p-6 md:p-8' : isTimeline ? 'border-l-2 border-[#65b7c2]/45 bg-[#65b7c2]/[0.035] p-6 md:p-8' : isAudit ? 'rounded-none border border-[#d8a84e]/25 bg-[#d8a84e]/[0.035] p-6 md:p-8' : isApplications ? 'group relative overflow-hidden border-[#ff4d00]/25 bg-[#ff4d00]/[0.035] p-6 hover:-translate-y-1 hover:border-[#ff4d00]/60 hover:bg-[#ff4d00]/[0.08] md:p-8' : 'border-[#ece9e4]/10 bg-[#ece9e4]/[0.03] p-6 md:p-8'} rounded-lg border transition-all duration-300`}
+                    className={`${isEditorial ? 'border-t border-[#ece9e4]/15 bg-transparent p-6 md:p-8' : isTimeline ? 'border-l-2 border-[#ece9e4]/45 bg-[#ece9e4]/[0.035] p-6 md:p-8' : isAudit ? 'rounded-none border border-[#ece9e4]/25 bg-[#ece9e4]/[0.035] p-6 md:p-8' : isApplications ? 'group relative overflow-hidden border-[#ece9e4]/25 bg-[#ece9e4]/[0.035] p-6 hover:-translate-y-1 hover:border-[#ece9e4]/60 hover:bg-[#ece9e4]/[0.08] md:p-8' : 'border-[#ece9e4]/10 bg-[#ece9e4]/[0.03] p-6 md:p-8'} rounded-lg border transition-all duration-300`}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ delay: mi * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   >
                     {isApplications && (
-                      <span className="mb-4 block font-mono2 text-[10px] tracking-[0.25em] text-[#ff4d00]/65">
+                      <span className="mb-4 block font-mono2 text-[10px] tracking-[0.25em] text-[#ece9e4]/65">
                         {String(mi + 1).padStart(2, '0')}
                       </span>
                     )}
-                    <h3 className="font-display text-xl font-bold tracking-tight text-[#ff4d00] md:text-2xl">
+                    <h3 className="font-display text-xl font-bold tracking-tight text-[#ece9e4] md:text-2xl">
                       {pick(mod.title, lang)}
                     </h3>
                     <p className="mt-3 text-base leading-relaxed text-[#ece9e4]/70">
@@ -422,7 +422,7 @@ export default function ProjectPage() {
         <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-[#ece9e4]/50">
           {t('Next project', 'Следующий проект')}
         </p>
-        <span className="mt-4 block font-display text-[7vw] font-extrabold uppercase leading-[0.9] tracking-tighter transition-colors duration-500 group-hover:text-[#ff4d00] md:text-[4vw]">
+        <span className="mt-4 block font-display text-[7vw] font-extrabold uppercase leading-[0.9] tracking-tighter transition-colors duration-500 group-hover:text-[#ece9e4] md:text-[4vw]">
           {pick(next.title, lang)} →
         </span>
       </Link>

@@ -771,7 +771,7 @@ const _projects: Project[] = [
           },
           {
             title: L('Audit workflow', 'Аудит-воркфлоу'),
-            body: L('Ten scenarios are configured in a single source of truth. Each stage defines its model, prompt, required documents, visibility, and Result Card format. Hidden quality stages receive the outputs of stages one to seven through controlled context limits.', 'Десять сценариев определены в едином источнике истины. Каждый этап задаёт модель, промпт, обязательные документы, видимость и формат Result Card. Скрытые этапы качества получают результаты этапов один–семь через контролируемые лимиты контекста.'),
+            body: L('Ten scenarios are configured in a single source of truth. Each stage defines its model, prompt, required documents, visibility, and Result Card format. Hidden quality stages receive the outputs of stages one to seven through controlled context limits.', 'Десять сценариев описаны в единой конфигурации. Для каждого этапа заданы модель, промпт, обязательные документы, видимость и формат Result Card. Скрытые этапы качества получают результаты этапов один–семь через контролируемые лимиты контекста.'),
           },
           {
             title: L('Document upload & parsing', 'Загрузка и парсинг документов'),
@@ -971,7 +971,7 @@ const _projects: Project[] = [
             title: L('This is a concept in active development.', 'Это концепт в активной разработке.'),
             body: L(
               'Everything above describes the intended design and the prototype being validated. The UI, pipeline, and regulatory framing are in active development and may change during field testing with clinicians.',
-              'Всё выше описывает задуманный дизайн и валидируемый прототип. UI, конвейер и регуляторное оформление находятся в активной разработке и могут измениться по итогам полевого тестирования с клиницистами.'
+              'Концепт находится в разработке. UI, конвейер и регуляторное оформление находятся в разработке и могут измениться по итогам полевого тестирования с клиницистами.'
             ),
           },
         ],
