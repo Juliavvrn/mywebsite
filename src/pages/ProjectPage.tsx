@@ -414,6 +414,33 @@ export default function ProjectPage() {
         )
       })}
 
+      {project.metrics && project.metrics.length > 0 && (
+        <div className="border-t border-[#ece9e4]/15 px-6 py-20 md:px-10 md:py-28">
+          <p className="mb-12 font-mono2 text-[11px] uppercase tracking-[0.35em] text-[#ece9e4]">
+            {t('Impact', 'Результат в цифрах')}
+          </p>
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[#ece9e4]/15 md:grid-cols-3">
+            {project.metrics.map((metric, mi) => (
+              <motion.div
+                key={mi}
+                className="bg-[#ece9e4]/[0.02] p-6 md:p-10"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: mi * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <p className="font-display text-3xl font-extrabold tracking-tight text-[#ece9e4] md:text-5xl">
+                  {pick(metric.value, lang)}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-[#ece9e4]/50 md:text-base">
+                  {pick(metric.label, lang)}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <Link
         to={`/works/${next.slug}`}
         data-hover

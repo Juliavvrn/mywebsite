@@ -66,6 +66,11 @@ export interface CaseStudySection {
   diagram?: FlowDiagram
 }
 
+export interface ProjectMetric {
+  value: Localized
+  label: Localized
+}
+
 export interface Project {
   slug: string
   title: Localized
@@ -79,6 +84,7 @@ export interface Project {
   description: Localized[]
   gallery: string[]
   caseStudy?: CaseStudySection[]
+  metrics?: ProjectMetric[]
 }
 
 function L(en: string, ru: string): Localized {
@@ -116,6 +122,12 @@ const _projects: Project[] = [
       ),
     ],
     gallery: [work4, work2],
+    metrics: [
+      { value: L('5h → 5min', '5ч → 5мин'), label: L('Time to draft a formal response', 'Время подготовки официального ответа') },
+      { value: L('2 days → 1 click', '2 дня → 1 клик'), label: L('Issue origin tracing', 'Отслеживание источника проблемы') },
+      { value: L('35–45%', '35–45%'), label: L('Development time saved vs build-from-scratch', 'Сокращение времени разработки') },
+      { value: L('16 → 1', '16 → 1'), label: L('Competitors analyzed, gap found', 'Конкурентов проанализировано, найден разрыв') },
+    ],
     caseStudy: [
       {
         label: L('The business context', 'Бизнес-контекст'),
@@ -333,6 +345,12 @@ const _projects: Project[] = [
       ),
     ],
     gallery: [work5, work4],
+    metrics: [
+      { value: L('Weeks → 30 min', 'Недели → 30 мин'), label: L('Time to first insight', 'Время до первых выводов') },
+      { value: L('0–100', '0–100'), label: L('Credibility score per respondent', 'Оценка достоверности каждого респондента') },
+      { value: L('OCEAN', 'OCEAN'), label: L('Trait calibration against population norms', 'Калибровка черт по нормам популяции') },
+      { value: L('Markdown + HTML', 'Markdown + HTML'), label: L('Auditable report export', 'Экспорт проверяемого отчёта') },
+    ],
     caseStudy: [
       {
         label: L('Why it exists', 'Зачем это нужно'),
@@ -575,6 +593,14 @@ const _projects: Project[] = [
       ),
     ],
     gallery: [work1, work4],
+    metrics: [
+      { value: L('6×', '6×'), label: L('Faster audit cycle', 'Сокращение цикла аудита') },
+      { value: L('~83%', '~83%'), label: L('Reduction in audit time', 'Сокращение времени аудита') },
+      { value: L('~300K RUB', '~300 тыс ₽'), label: L('Labor cost saved per audit', 'Экономия на трудозатратах за аудит') },
+      { value: L('98%', '98%'), label: L('Document parse success rate', 'Успешность парсинга документов') },
+      { value: L('<15 min', '<15 мин'), label: L('Time to first verdict', 'Время до первого вердикта') },
+      { value: L('10 stages', '10 этапов'), label: L('Guided methodology steps', 'Этапов управляемой методологии') },
+    ],
     caseStudy: [
       {
         label: L('Product purpose', 'Назначение продукта'),
